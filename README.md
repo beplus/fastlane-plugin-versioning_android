@@ -13,7 +13,9 @@ fastlane add_plugin versioning_android
 
 ## About versioning_android
 
-Android Versioning Plugin for Fastlane
+Android Versioning Plugin for Fastlane - easily Get / Set `versionCode` and `versionName` on your Android project.
+
+**Note**: If you need to work with `Build Number` and `Version` on iOS, see [versioning_ios](https://github.com/beplus/fastlane-plugin-versioning_ios)
 
 ### Available actions
 - `android_get_version_code` to get the Version Code
@@ -25,7 +27,9 @@ Android Versioning Plugin for Fastlane
 
 Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
 
-You can find a fully functional setup of this plugin in the [UdemyFastlane](https://github.com/igorlamos/udemy-fastlane) repo, where you can also find more info about versioning of Android apps.
+### Example project
+
+**@todo** You can find a fully functional setup of this plugin in the [UdemyFastlane](https://github.com/igorlamos/udemy-fastlane) repo, where you can also find more info about versioning of Android apps.
 
 ## Run tests for this plugin
 
