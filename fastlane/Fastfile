@@ -1,0 +1,19 @@
+lane :test do
+  android_get_version_name(
+    gradle_file: "app/build.gradle" # optional
+  )
+
+  android_set_version_name(
+    version: "1.23.4",
+    gradle_file: "app/build.gradle" # optional
+  )
+
+  android_get_version_code(
+    gradle_file: "app/build.gradle" # optional
+  )
+
+  android_set_version_code(
+    version_code: 17, # optional, if not specified, Version Code will be incremented
+    gradle_file: "app/build.gradle" # optional
+  )
+end
