@@ -4,7 +4,7 @@ lane :test do
   )
 
   android_set_version_name(
-    version: "1.23.4",
+    version_name: "1.23.4",
     gradle_file: "app/build.gradle" # optional
   )
 
