@@ -7,7 +7,7 @@ module Fastlane
     class AndroidSetVersionNameAction < Action
       def self.run(params)
         gradle_file_path = Helper::VersioningAndroidHelper.get_gradle_file_path(params[:gradle_file])
-        new_version_name = Helper::VersioningAndroidHelper.get_new_version_name(gradle_file_path, params[:version_name])
+        new_version_name = Helper::VersioningAndroidHelper.get_new_version_name(gradle_file_path, params[:version_name], params[:bump_type])
         # bump_type ||= params[:bump_type]
 
         saved = Helper::VersioningAndroidHelper.save_key_to_gradle_file(gradle_file_path, "versionName", new_version_name)
