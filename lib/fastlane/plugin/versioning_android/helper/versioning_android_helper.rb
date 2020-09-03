@@ -13,7 +13,7 @@ module Fastlane
 
       def self.get_gradle_file_path(gradle_file)
         gradle_file = self.get_gradle_file(gradle_file)
-        return File.expand_path(gradle_file).shellescape
+        return File.expand_path(gradle_file)
       end
 
       def self.get_new_version_code(gradle_file, new_version_code)
