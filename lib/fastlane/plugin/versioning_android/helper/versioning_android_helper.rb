@@ -30,18 +30,18 @@ module Fastlane
           new_version_name = self.read_key_from_gradle_file(gradle_file, "versionName")
         end
 
-          current_version_parts = new_version_name.split(/[.]/)
-          major = current_version_parts[0].to_i
-          minor = current_version_parts[1].to_i
-          patch = current_version_parts[2].to_i
+        current_version_parts = new_version_name.split(/[.]/)
+        major = current_version_parts[0].to_i
+        minor = current_version_parts[1].to_i
+        patch = current_version_parts[2].to_i
 
-          if bump_type == "major"
-            new_version_name = "#{major + 1}.0.0"
-          elsif bump_type == "minor"
-            new_version_name = "#{major}.#{minor + 1}.0"
-          elsif bump_type == "patch"
-            new_version_name = "#{major}.#{minor}.#{patch + 1}"
-          end
+        if bump_type == "major"
+          new_version_name = "#{major + 1}.0.0"
+        elsif bump_type == "minor"
+          new_version_name = "#{major}.#{minor + 1}.0"
+        elsif bump_type == "patch"
+          new_version_name = "#{major}.#{minor}.#{patch + 1}"
+        end
 
         return new_version_name.to_s
       end
