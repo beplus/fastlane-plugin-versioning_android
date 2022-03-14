@@ -5,10 +5,21 @@ module Fastlane
       require "tempfile"
       require "fileutils"
 
-      GRADLE_FILE_TEST = "/tmp/fastlane/tests/versioning/app/build.gradle"
+      DEFAULT_GROOVY_GRADLE_FILE = "./app/build.gradle"
+      DEFAULT_KOTLIN_GRADLE_FILE = "./app/build.gradle.kts"
 
       def self.get_gradle_file(gradle_file)
-        return Helper.test? ? GRADLE_FILE_TEST : gradle_file
+        if gradle_file.nil?
+          if File.exist?(DEFAULT_GROOVY_GRADLE_FILE)
+            return DEFAULT_GROOVY_GRADLE_FILE
+          elsif File.exist?(DEFAULT_KOTLIN_GRADLE_FILE)
+            return DEFAULT_KOTLIN_GRADLE_FILE
+          else
+            return DEFAULT_GROOVY_GRADLE_FILE
+          end
+        else
+          return gradle_file
+        end
       end
 
       def self.get_gradle_file_path(gradle_file)
@@ -58,7 +69,7 @@ module Fastlane
           end
           file.close
         rescue => err
-          UI.error("An exception occured while reading gradle file: #{err}")
+          UI.error("An exception occurred while reading gradle file: #{err}")
           err
         end
         return value
@@ -72,7 +83,7 @@ module Fastlane
           temp_file = Tempfile.new("flSave_#{key}_ToGradleFile")
           File.open(gradle_file, "r") do |file|
             file.each_line do |line|
-              if line.include? key and found == false
+              if line.include? key and !found
                 found = true
                 line.replace line.sub(current_value.to_s, value.to_s)
               end
@@ -86,7 +97,7 @@ module Fastlane
           temp_file.unlink
         end
 
-        return found == true ? value : -1
+        return found ? value : -1
       end
     end
   end

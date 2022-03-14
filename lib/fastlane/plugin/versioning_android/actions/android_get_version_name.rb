@@ -31,13 +31,10 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(key: :gradle_file,
                                   env_name: "FL_ANDROID_GET_VERSION_NAME_GRADLE_FILE",
-                               description: "(optional) Specify the path to your app build.gradle if it isn't in the default location",
+                               description: "(optional) Specify the path to your app build.gradle or build.gradle.kts if it isn't in the default location",
                                   optional: true,
                                       type: String,
-                             default_value: "app/build.gradle",
-                              verify_block: proc do |value|
-                                UI.user_error!("Could not find app build.gradle file") unless File.exist?(value) || Helper.test?
-                              end)
+                             default_value: nil)
         ]
       end
 
