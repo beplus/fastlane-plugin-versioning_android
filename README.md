@@ -18,6 +18,7 @@ Android Versioning Plugin for Fastlane - easily Get / Set `versionCode` and `ver
 **Note**: If you need to work with `Build Number` and `Version` on iOS, see [versioning_ios](https://github.com/beplus/fastlane-plugin-versioning_ios)
 
 ### Available actions
+
 - `android_get_version_code` to get the Version Code
 - `android_get_version_name` to get the Version Name
 - `android_set_version_code` to set the new Version Code
@@ -40,13 +41,22 @@ rake
 ```
 
 To automatically fix many of the styling issues, use
+
 ```
 rubocop -a
 ```
 
 ## Issues and Feedback
 
-For any other issues and feedback about this plugin, please submit it to this repository.
+### Flutter
+
+The `android_set_version_name` action on Flutter requires a different usage when setting a specific version.
+
+To avoid setting a numeral instead of a string in the build.gradle file, the `version_name` argument (string) needs to be wrapped in quotes:
+
+```rb
+android_set_version_name(version_name: '"1.23.4"')
+```
 
 ## Troubleshooting
 
